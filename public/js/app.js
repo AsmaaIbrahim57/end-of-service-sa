@@ -1943,6 +1943,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['route'],
   data: function data() {
@@ -1966,6 +1982,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    //Submission
     submitForm: function submitForm(e) {
       var _this = this;
 
@@ -1974,7 +1991,7 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         axios.post(this.route, this.form).then(function (response) {
           if (response.status == 200) {
-            console.log(response.data.employee);
+            // console.log(response.data.employee);
             _this.success = true;
             setTimeout(function () {
               window.location.href = "/";
@@ -1985,14 +2002,17 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
+    //Validation
     validateForm: function validateForm() {
+      //Name
       if (this.form.name == "" || this.form.name.trim() < 1) {
         this.errors.name = "Name is required";
       } else if (this.form.name.length < 5 || this.form.name.length > 100 || this.form.name.trim().length < 5) {
         this.errors.name = "Name length should be between 5 and 100";
       } else {
         this.errors.name = "";
-      }
+      } //Work Years
+
 
       if (this.form.work_years == "") {
         this.errors.work_years = "No of Work Years is required";
@@ -2002,7 +2022,8 @@ __webpack_require__.r(__webpack_exports__);
         this.errors.work_years = "Invalid Input";
       } else {
         this.errors.work_years = "";
-      }
+      } //Salary
+
 
       if (this.form.salary < 1) {
         this.errors.salary = "Invalid Input";
@@ -2067,12 +2088,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['employeeid', 'employeegender', 'resignationreason', 'route'],
   data: function data() {
     return {
       form: {
-        reason: this.resignationreason != "" ? this.resignationreason : 'other',
+        reason: this.resignationreason ? this.resignationreason : 'other',
         employeeId: this.employeeid
       },
       end_of_service: '',

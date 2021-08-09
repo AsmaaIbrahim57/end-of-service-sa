@@ -6,8 +6,11 @@
     <div class="create-form container" id="app">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <end-service 
-                employeeid={{$employee->id}} employeegender={{$employee->gender}}
-                route={{route('get-end-service')}} resignationreason={{$employee->resignation_reason}}></end-service>
+                employeeid={{$employee->id}}
+                employeegender={{$employee->gender}}
+                route={{route('get-end-service')}}
+                resignationreason={{$employee->resignation_reason}}
+            >
     </div>
 </section>
 

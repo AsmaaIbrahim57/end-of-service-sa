@@ -1,19 +1,25 @@
 <template>
+
     <form method="post"
     :action="route"
     id="CreateEmployee"
     @submit.prevent="submitForm">
+
         <div :class="['success-message alert alert-success ', success ? 'display-block' : ' ']">
             <i class="fa fa-check-circle" aria-hidden="true"></i>
             Employee added successfully
         </div>
+
         <input type="hidden" name="_token" :value="csrf" />
+
         <!--Name-->
         <div class="form-group">
+
             <label for="name">
                 Name:
                 <span class="required">*</span>
             </label>
+
             <div
                 :class="[
                             ' custom-input',
@@ -31,8 +37,10 @@
             </div>
         </div>
 
+
         <!--Gender-->
         <div class="form-group">
+
             <label for="gender">
                 Gender:
                 <span class="required">*</span>
@@ -43,12 +51,15 @@
             </select>
         </div>
 
+
          <!--Work Years-->
         <div class="form-group">
+
             <label for="workyears">
                 No of work years:
                 <span class="required">*</span>
             </label>
+
             <div
                 :class="[
                             ' custom-input',
@@ -69,10 +80,12 @@
 
          <!--Salary-->
         <div class="form-group">
+
             <label for="name">
                 Salary:
                 <span class="required">*</span>
             </label>
+
             <div
                 :class="[
                             ' custom-input',
@@ -91,19 +104,24 @@
             </div>
         </div>
 
+        <!--Submit-->
         <div class="add">
              <button type="submit" class="btn">Add Employee</button>
         </div>
     </form>
 </template>
+
+
 <script>
 export default {
+
     props:[
         'route',
     ],
-    data(){
-        return{
 
+    data(){
+
+        return{
             csrf: document
                         .querySelector('meta[name="csrf-token"]')
                         .getAttribute("content"),
@@ -113,8 +131,8 @@ export default {
                 resignation_reason:'',
                 salary:'',
                 work_years:'',
-
             },
+
             errors:{
                 name:'',
                 gender:'',
@@ -124,22 +142,27 @@ export default {
 
 
             },
+
             success:false
 
         }
     },
     
     methods:{
+
+        //Submission
         submitForm(e) {
             if(!this.validateForm()){
+
                 e.preventDefault();
             }else{
+
                 axios
                 .post(this.route, this.form)
                 .then(response => {
                     if(response.status==200)
                     {
-                        console.log(response.data.employee);
+                        // console.log(response.data.employee);
                         this.success=true;
 
                         setTimeout(function() {
@@ -156,30 +179,38 @@ export default {
       
         },
 
+
+        //Validation
          validateForm:function(){
              
+            //Name
             if (this.form.name == "" || this.form.name.trim() < 1) {
-                    this.errors.name = "Name is required";
+                this.errors.name = "Name is required";
             }else if( 
                 this.form.name.length < 5 ||
                 this.form.name.length > 100 ||
-                this.form.name.trim().length < 5){
+                this.form.name.trim().length < 5
+                ){
+
                 this.errors.name="Name length should be between 5 and 100";
             } else {
                 this.errors.name = "";
             }
 
-             if ( this.form.work_years =="") {
+
+            //Work Years
+            if ( this.form.work_years =="") {
                 this.errors.work_years = "No of Work Years is required";
             }else if(this.form.work_years<0){
                 this.errors.work_years="Invalid Input";
             }else if(this.form.work_years>100){
                 this.errors.work_years="Invalid Input";
-
             }else {
                 this.errors.work_years = "";
             }
 
+
+            //Salary
             if ( this.form.salary < 1) {
                 this.errors.salary="Invalid Input";
             }else if(this.form.salary==""){
