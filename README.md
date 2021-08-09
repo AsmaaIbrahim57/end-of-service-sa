@@ -4,6 +4,12 @@ Web app calculates end of service for employees based on SA law for end of servi
 
 
 
+
+
+
+
+
+
 INSTALATTION
 
 1. git pull origin https://github.com/AsmaaIbrahim57/end-of-service-sa in htdocs directory
@@ -18,6 +24,10 @@ INSTALATTION
                          npm install
                          php artisan serve
                          copy the link in your terminal and paste it into your browser address bar
+
+
+
+
 
 
 FEATURES
