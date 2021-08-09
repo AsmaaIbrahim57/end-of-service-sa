@@ -1,6 +1,6 @@
 DESCRIPTION
 
-Web app calculates end of service for employees based on SA law for end of service rules and conditions
+ Web app calculates end of service for employees based on SA law for end of service rules and conditions
 
 
 
