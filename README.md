@@ -8,6 +8,12 @@ DESCRIPTION
 
 
 
+TECHNOLOGY
+
+ Bootstrap
+ Javascript (Vuejs)
+ PHP (Laravel)
+ Mysql
 
 
 INSTALATTION
